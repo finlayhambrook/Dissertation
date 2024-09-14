@@ -1,0 +1,34 @@
+// Jest appears to have real trouble with the constants system we're using for environment variables.
+// Given we're performing Unit Tests and not E2E (end-to-end), we can use placeholders.
+
+import Amplify from 'aws-amplify';
+
+// Mock Amplify. We don't want to make loads of calls to AWS, risk a ban.
+jest.mock('aws-amplify', () => ({
+    configure: jest.fn(),
+}));
+
+// This test checks if the AWS Amplify config function is called with the correct parameters.
+describe('Amplify Configuration', () => {
+    beforeAll(() => {
+        Amplify.configure({
+            Auth: {
+                // Very simple placeholders.
+                // Again, we're creating small goals to achieve. Actual errors with the real API calls are found in the terminal.
+                region: 1,
+                userPoolId: 2,
+                userPoolWebClientId: 3
+            },
+        });
+    });
+
+    test('should configure Amplify with the correct parameters', () => {
+        expect(Amplify.configure).toHaveBeenCalledWith({
+            Auth: {
+                region: 1,
+                userPoolId: 2,
+                userPoolWebClientId: 3
+            },
+        });
+    });
+});

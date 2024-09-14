@@ -1,0 +1,11 @@
+import { render, fireEvent } from '@testing-library/react-native'; // For rendering components and simulating events
+import SignUp_Login from '../SignUp_Login';
+import React from 'react'; // Required for JSX if you're working with React components
+
+test('should switch to sign-up form when sign-up button is clicked', () => {
+    const { getByText } = render(<SignUp_Login />);
+
+    fireEvent.press(getByText('Sign Up'));
+
+    expect(getByText('Enter your full name')).toBeTruthy();
+});

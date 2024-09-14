@@ -1,0 +1,13 @@
+import { Auth } from 'aws-amplify'; // For mocking the sign-in method
+import { jest } from '@jest/globals'; // For mocking and test functions
+
+
+test('should log in and navigate to MainApp on success', async () => {
+    Auth.signIn = jest.fn().mockResolvedValue({ username: 'testuser' });
+    const mockNavigate = jest.fn();
+
+    await handleLogin();
+
+    expect(Auth.signIn).toHaveBeenCalledWith('test@example.com', 'password123');
+    expect(mockNavigate).toHaveBeenCalledWith('MainApp');
+});

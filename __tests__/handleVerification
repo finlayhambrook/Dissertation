@@ -1,0 +1,10 @@
+import { Auth } from 'aws-amplify'; // For mocking the confirmSignUp method
+import { jest } from '@jest/globals'; // For mocking and test functions
+
+test('should verify the account with correct code', async () => {
+    Auth.confirmSignUp = jest.fn().mockResolvedValue({});
+
+    await handleVerification();
+
+    expect(Auth.confirmSignUp).toHaveBeenCalledWith('test@example.com', '123456');
+});

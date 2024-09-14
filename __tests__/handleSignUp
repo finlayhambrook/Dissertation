@@ -1,0 +1,16 @@
+import { Auth } from 'aws-amplify'; // For mocking the sign-up method
+import { handleSignUp } from '../SignUp_Login_OLD_0';
+/// import { jest } from '@jest/globals'; // For mocking and test functions
+
+test('should sign up a user with correct email and password', async () => {
+    Auth.signUp = jest.fn().mockResolvedValue({ userSub: '12345' });
+
+    await handleSignUp('test@example.com', 'password123', 'Test User');
+
+    expect(Auth.signUp).toHaveBeenCalledWith({
+        username: 'test@example.com',
+        password: 'password123',
+        attributes: { email: 'test@example.com', name: 'Test User' },
+    });
+});
+

@@ -1,4 +1,3 @@
-// This lets us use the .env file that contains the environment variables we use to connect to AWS.
 import Constants from 'expo-constants';
 
 import { StatusBar } from 'expo-status-bar';
@@ -26,17 +25,17 @@ Amplify.configure({
   }
 });
 
-const Stack = createStackNavigator();
-
 export default function App() {
-  return (
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="Login" component={SignUp_Login} />
-          <Stack.Screen name="Homepage" component={Homepage} />
-        </Stack.Navigator>
-      </NavigationContainer>
-  );
+  /**
+   * return (
+   *     <View style={styles.container}>
+   *       <Text>ITS REACT TIME</Text>
+   *       <StatusBar style="auto" />
+   *     </View>
+   *   );
+   */
+
+  return <SignUp_Login />
 }
 
 const styles = StyleSheet.create({
