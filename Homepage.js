@@ -1,11 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, Button, StyleSheet } from 'react-native';
 
 export default function Homepage() {
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Welcome to the Homepage!</Text>
-            <Text style={styles.title}>Not much happening here...</Text>
+            <Text style={styles.title}>Lets make a booking!</Text>
         </View>
     );
 }
@@ -14,11 +13,17 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#fffaaa',
+        padding: 20,
     },
     title: {
         fontSize: 24,
         fontWeight: 'bold',
+        marginBottom: 20,
+        textAlign: 'center',
+    },
+    subtitle: {
+        fontSize: 18,
+        textAlign: 'center',
     },
 });
+

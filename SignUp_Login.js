@@ -22,8 +22,12 @@ export const handleSignUp = async (email, password, fullName, setIsVerificationS
 export const handleLogin = async (email, password, navigation) => {
     try {
         const signInResponse = await Auth.signIn(email, password);
-        console.log('Sign in success:', signInResponse);
-        navigation.navigate('Homepage');
+        //console.log('Sign in success:', signInResponse);
+        console.log('JWT Token:', signInResponse.signInUserSession.idToken.jwtToken);
+        console.log('AAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHH');
+
+        // Automatically redirect the user to the actual application. QOL.
+        navigation.navigate('MainApp');
     } catch (error) {
         console.log('Error signing in:', error.message);
     }
@@ -33,7 +37,7 @@ export const handleVerification = async (email, verificationCode, navigation) =>
     try {
         const confirmSignUpResponse = await Auth.confirmSignUp(email, verificationCode);
         console.log('Account confirmed successfully:', confirmSignUpResponse);
-        navigation.navigate('Homepage');
+        navigation.navigate('MainApp');
     } catch (error) {
         console.log('Error verifying account:', error.message);
     }
